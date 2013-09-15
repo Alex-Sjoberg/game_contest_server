@@ -1,0 +1,15 @@
+
+<div>
+  I'm a div
+</div>
+
+<%= form_for @user do |f| %>
+    <%= f.label :username , "Enter a username" %>
+    <%= f.text_field :username %>
+    <%= f.label :password , "Enter a password" %>
+    <%= f.text_field :password %>
+    <%= f.label :confirmation , "Enter confirmation again" %>
+    <%= f.text_field :confirmation %>
+    <%= f.label :confirmation , "Enter confirmation again" %>
+    <%= f.submit "Create new account" %>
+<% end %>
