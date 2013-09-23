@@ -9,8 +9,13 @@ class UsersController < ApplicationController
         puts "Params sub user" , params[:user]
        # params = params[:user].symbolize_keys
         
-        @user = User.new()
-        @user.update_attributes!(user_params)
+        @user = User.new(user_params)
+        if @user.save
+        #@user.update_attributes!(user_params)
+          redirect_to @user
+        else
+          render 'new'
+        end 
     end
     
     private 
