@@ -10,12 +10,12 @@ class UsersController < ApplicationController
        # params = params[:user].symbolize_keys
         
         @user = User.new()
-       # @user.update_attributes!(user_params)
+        @user.update_attributes!(user_params)
     end
     
     private 
     def user_params
-        params.require(:user).permit(:username,:password,:confirmation,:email)
+      params.require(:user).permit(:username,:password,:password_confirmation,:email)
     end
     
 end
