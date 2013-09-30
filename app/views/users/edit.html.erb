@@ -1,0 +1,6 @@
+<h1> Change ALL the fields </h1>
+
+<%= form_for @user, :action => "update", :method => :patch do |f| %>
+  <%= render 'user_form', f:f %>
+  <%= f.submit "Update account" %>
+<% end %>

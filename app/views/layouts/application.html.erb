@@ -6,9 +6,13 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
 
-<%= yield %>
 
+
+<body onload="run_webgl()" onkeydown = "move_view(event);">
+    <%= yield %>
+    <canvas id="c1" width="500" height="500" >
+    Please use a browser that supports "canvas"
+    </canvas>
 </body>
 </html>
