@@ -13,4 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require cuon-matrix.js
+//= require cuon-utils.js
+//= require webgl-debug.js
+//= require webgl-utils.js
 //= require_tree .
