@@ -1,4 +1,5 @@
 <li>
   <%= link_to user.username , user_path(user) %> 
+  <%= user.email %>
   <%= link_to 'delete them' , user_path(user), :method => :delete , data: {confirm: "Are you sure?"} %>  
 </li>
