@@ -8,11 +8,20 @@
 </head>
 
 
-
 <body onload="run_webgl()" onkeydown = "move_view(event);">
+    <nav class = "navbar navbar-default" role = "navigation">
+        <a class = "navbar-brand" href = "signup_path"> Game Contest Server </a>
+        
+    </nav>
+    
+    
+    <% flash.each do |level , message| %>
+        <div class="alert alert-<%= level %>"> <% message %> <\div> 
+    <%end%>
     <%= yield %>
     <canvas id="c1" width="500" height="500" >
     Please use a browser that supports "canvas"
     </canvas>
+            
 </body>
 </html>

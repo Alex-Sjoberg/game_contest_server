@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap
 //= require cuon-matrix.js
 //= require cuon-utils.js
 //= require webgl-debug.js

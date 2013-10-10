@@ -2,5 +2,5 @@
 
 <%= form_for @user, :action => "update", :method => :patch do |f| %>
   <%= render 'user_form', f:f %>
-  <%= f.submit "Update account" %>
+<%= f.submit "Update account" , class: 'btn btn-default'%>
 <% end %>

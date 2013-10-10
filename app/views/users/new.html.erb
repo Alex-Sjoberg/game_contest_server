@@ -2,7 +2,18 @@
 <p>
 Create a new user
 </p>
+<div class = "alert alert-danger">
+    <ul class = "text-danger"> 
+       <% if @user.errors.any? %>
+        <p> God has entrusted you stewardship of <%= pluralize(@user.errors.count, 'error') %>.</p>
+       <% @user.errors.full_messages.each do |message| %>
+       <li> <%= message %> </li>
+    <%end %>
+  <%end %>
+   </ul>
+ </div>
+
 <%= form_for @user, :action => "create", :method => :post do |f| %>
   <%= render 'user_form', f:f %>
-  <%= f.submit "Create new account" %>
+  <%= f.submit "Create new account" , class: 'btn btn-primary'%>
 <% end %>
