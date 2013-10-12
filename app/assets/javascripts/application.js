@@ -18,4 +18,6 @@
 //= require cuon-utils.js
 //= require webgl-debug.js
 //= require webgl-utils.js
+//= require tools-sjoberg.js
+//= require 3d_sjoberg.js
 //= require_tree .

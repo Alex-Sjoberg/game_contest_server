@@ -8,13 +8,14 @@
 </head>
 
 
-<body onload="run_webgl()" onkeydown = "move_view(event);">
+<body onload="main()" onkeydown = "move_view(event);">
     <nav class = "navbar navbar-default" role = "navigation">
-        <a class = "navbar-brand" href = "/users"> Game Contest Server </a>
+        <a class = "navbar-brand" href = '<%= root_path %>'> Game Contest Server </a>
         
       <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="/users/new">Sign up</a></li>
+          <li class="active"><a href= '<%=signup_path%>'>Sign Up</a></li>
+          <li class="active"><a href= '<%=users_path%>'>Users</a></li>
         </ul>
        </div>
      </nav>
@@ -23,7 +24,7 @@
         <div class="alert alert-<%= level %>"> <% message %> <\div> 
     <%end%>
     <%= yield %>
-    <canvas id="c1" width="500" height="500" >
+    <canvas id="webgl" width="500" height="500" >
     Please use a browser that supports "canvas"
     </canvas>
             
