@@ -1,10 +1,15 @@
 class UsersController < ApplicationController
-  before_action  :ensure_user_logged_in , only: [:edit,:update]
+  before_action :ensure_user_logged_in , only: [:edit,:update]
   before_action :ensure_correct_user , only: [:edit, :update]
   before_action :ensure_admin , only: [:destroy]
   
     def new
+      if !logged_in? then
         @user = User.new
+      else
+        flash[:warning] = "You're already logged in"
+        redirect_to("/")
+      end
     end
   
   def index
@@ -31,8 +36,10 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
        
         if @user.update(user_params)
+          flash[:success] = " 'Congratulations, you've updated your account information' -Ghandi " 
           redirect_to @user
         else
+          flash[:danger] = " 'You entered the wrong information' -Ghandi " 
           render 'edit'
         end
       end  
@@ -42,11 +49,16 @@ class UsersController < ApplicationController
       end
       
       def destroy
-        @user = User.find(params[:id])
-        @user.destroy
-        redirect_to users_path
+        if admin? and current_user?(@user)
+          redirect_to root_path
+        elsif admin?
+          flash[:success] = "Successfully deleted user"
+          @user = User.find(params[:id])
+          @user.destroy
+          redirect_to users_path
+        end
       end
-    
+      
     private 
     def user_params
       params.require(:user).permit(:username,:password,:password_confirmation,:email)
@@ -62,8 +74,7 @@ class UsersController < ApplicationController
       end
       
       def ensure_admin
-        #redirect_to root_path unless current_user and current_user.admin?
-        true
+        redirect_to root_path unless current_user and current_user.admin?
       end
     
 end

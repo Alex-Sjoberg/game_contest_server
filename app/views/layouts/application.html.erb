@@ -14,13 +14,14 @@
         
       <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav">
-          <li class="active"><%=link_to 'Home' , users_path %></li>         
-          <li class="active"><a href= '<%=signup_path%>'>Sign Up</a></li>
+          <li class="active"><%=link_to 'Home' , users_path %></li> 
           <li class="active"><a href= '<%=users_path%>'>Users</a></li>
           <% if logged_in? %>
             <li class="active"><a href= '<%=user_path(current_user)%>'>Profile</a></li>  
-            <li class="active"><%=link_to 'Log Out' , logout_path, :method => :delete %></li>         
-          <% else %>
+            <li class="active"><%= link_to 'Log Out' , logout_path, :method => :delete %></li>
+            <li class="active"><%= link_to 'Settings' , edit_user_path(current_user) %></li>         
+          <% elsif request.original_url != login_path %>
+            <li class="active"><a href= '<%=signup_path%>'>Sign Up</a></li>
             <li class="active"><a href= '<%=login_path%>'>Log In</a></li>  
           <% end %>
         </ul>
