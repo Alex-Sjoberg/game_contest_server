@@ -17,15 +17,20 @@ class UsersController < ApplicationController
   end
     
     def create
-        @user = User.new(user_params)
-      if @user.save then
-        flash[:success] = "Welcome" + @user.username + "!"
-          cookies.signed[:user_id] = @user.id
-          redirect_to @user
-        else
-          render 'new'
-        end 
-      end 
+      if logged_in?
+        redirect_to root_path
+        flash[:warning] = "Log out to create a new account"
+      else
+          @user = User.new(user_params)
+        if @user.save then
+          flash[:success] = "Welcome" + @user.username + "!"
+            cookies.signed[:user_id] = @user.id
+            redirect_to @user
+          else
+            render 'new'
+          end 
+        end
+     end 
        
     def show
         @user = User.find(params[:id])
@@ -49,11 +54,12 @@ class UsersController < ApplicationController
       end
       
       def destroy
+        @user = User.find(params[:id])
         if admin? and current_user?(@user)
+          flash[:danger] = "Admin suicide is prohibited. Can't delete yourself"
           redirect_to root_path
         elsif admin?
           flash[:success] = "Successfully deleted user"
-          @user = User.find(params[:id])
           @user.destroy
           redirect_to users_path
         end
