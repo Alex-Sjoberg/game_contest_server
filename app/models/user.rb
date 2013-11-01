@@ -3,4 +3,6 @@ class User < ActiveRecord::Base
   
   validates :username , presence: true , uniqueness:true ,length: {maximum: 20}
   validates :email , presence:true , format: {with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i}
+  
+  has_many :referees
 end
