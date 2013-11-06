@@ -1,6 +1,7 @@
 GameContestServer::Application.routes.draw do
   get 'signup', to: 'users#new', as: 'signup'
   resources :users
+  resources :referees
   
   resources :sessions ,only: [:new, :create, :destroy]
   get 'login', to: 'sessions#new' , as: 'login'
