@@ -5,9 +5,7 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 # Ignore all uploaded data files
-/code/managers/development/*
-/code/managers/test/*
-/code/managers/production/*
+/code/*
 
 # Ignore bundler config.
 /.bundle
