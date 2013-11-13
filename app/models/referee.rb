@@ -6,7 +6,7 @@ class Referee < ActiveRecord::Base
   validates :name , presence: true , length: {minimum: 1}
   validates :rules_url , presence: true , length: {minimum: 1}
   validates :file_location , presence: true , length: {minimum: 2}
-  validates :players_per_game, numericality: { greater_than: 0, less_than: 11 }
+  validates :players_per_game, numericality: { greater_than: 0, less_than: 11 , only_integer: true}
   validates :rules_url , format: URI::regexp(%w(http https))
     
     def upload=(uploaded_io)

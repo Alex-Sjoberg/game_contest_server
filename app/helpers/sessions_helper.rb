@@ -17,11 +17,11 @@ module SessionsHelper
   end
   
   def owner?(object)
-    current_user.id == object.user_id
+    logged_in? and current_user.id == object.user_id
   end
   
   def contest_creator?
-    current_user.contest_creator
+    logged_in? and current_user.contest_creator?
   end
   
   def banned?

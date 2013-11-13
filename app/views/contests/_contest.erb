@@ -7,5 +7,7 @@
 <p> Contest description <%= contest.description %> </p>
 <p> Deadline <%= contest.deadline %> </p>
 <p> Start <%= contest.start %> </p>
-
+<p> Referee <%= link_to contest.referee.name , referee_path(contest.referee) %> </p>
+<p> Owner<%= link_to contest.user.username , user_path(contest.user) %> </p>
+   
 </li>
