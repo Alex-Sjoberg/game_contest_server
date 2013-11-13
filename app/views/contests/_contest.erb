@@ -1,0 +1,11 @@
+<li>
+<p> <%= link_to contest.name, contest_path(contest) %> <p>
+<% if logged_in? and owner?(contest) %>
+    <%= link_to "delete" , contest_path(contest) , :method => :delete , data: {confirm: "Are you sure?"}%>  
+<% end %>
+<p> Type <%= contest.contest_type %>
+<p> Contest description <%= contest.description %> </p>
+<p> Deadline <%= contest.deadline %> </p>
+<p> Start <%= contest.start %> </p>
+
+</li>

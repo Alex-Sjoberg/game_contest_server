@@ -70,17 +70,13 @@ class UsersController < ApplicationController
       params.require(:user).permit(:username,:password,:password_confirmation,:email)
     end
       
-      def ensure_user_logged_in
-        ( flash[:warning] = "Unable" and redirect_to login_path) unless logged_in?
-      end
-      
       def ensure_correct_user
         @user = User.find(params[:id])
         (redirect_to "/" and flash[:danger] = "Unable") unless current_user?(@user)
       end
       
       def ensure_admin
-        redirect_to root_path unless current_user and current_user.admin?
+        (flash[:danger] = "Unable" and redirect_to root_path) unless current_user and current_user.admin?
       end
     
 end

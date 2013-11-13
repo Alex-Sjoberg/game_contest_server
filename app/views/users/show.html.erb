@@ -1,2 +1,17 @@
 <h1>I'm showing your user</h1>
 <%= render @user %>
+
+
+<% if @user.players.length > 0 %>
+  <h2> Players </h2>
+  <%= link_to 'New Player' , new_player_path%>
+  <%= render @user.players %>
+  <%= @user.players.length %> players
+<% end %>
+
+<%if @user.referees.length > 0 %>
+   <h2> Referees </h2>
+  <%= link_to 'New Referee' , new_referee_path%>
+   <%= render @user.referees %>
+   <%= @user.referees.length %> referees
+<% end %>

@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
   validates :email , presence:true , format: {with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i}
   
   has_many :referees
+  has_many :players
+  has_many :contests
 end

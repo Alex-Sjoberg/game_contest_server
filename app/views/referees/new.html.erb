@@ -1,0 +1,18 @@
+<h1> Creating a new ref </h1>
+
+<% if @referee.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+      <% @referee.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for @referee , :action => "create", :method => :post do |f| %>
+    <%= render 'referee_fields' , f:f %>
+
+<%= f.submit "Create Referee" %>
+
+<%end%>
