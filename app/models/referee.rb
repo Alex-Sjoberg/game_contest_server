@@ -3,7 +3,7 @@ class Referee < ActiveRecord::Base
   has_many :matches, as: :manager
   has_many :contests
   
-  validates :name , presence: true , length: {minimum: 1}
+  validates :name , presence: true , uniqueness: true, length: {minimum: 1}
   validates :rules_url , presence: true , length: {minimum: 1}
   validates :file_location , presence: true , length: {minimum: 2}
   validates :players_per_game, numericality: { greater_than: 0, less_than: 11 , only_integer: true}

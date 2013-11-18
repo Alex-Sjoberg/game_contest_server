@@ -13,6 +13,7 @@ class ContestsController < ApplicationController
    #@contest.referee = Referee.find(params[:contest][:referee].to_i)
     if @contest.save
       flash[:success] = "Contest created"
+      flash[:danger] = "Theres always danger"
       redirect_to @contest
     else
       flash[:danger] = "Naw dude, that ain't right"
