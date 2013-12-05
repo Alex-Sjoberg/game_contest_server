@@ -1,0 +1,18 @@
+<li>
+  <p> <%= link_to  match.id , match_path(match) %> </p>
+  <p> Status <%= match.status %> </p>
+  
+  <% if match.manager_type == "Contest" %>
+    contest stuff?
+  <% else %>
+    do other stuff
+  <% end %>
+    Manager: <%= match.manager.name %>
+    Referee: <%= match.manager.referee.name %>
+
+
+  
+  1 day
+  less than a minute
+  4
+</li>

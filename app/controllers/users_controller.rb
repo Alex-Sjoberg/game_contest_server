@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   before_action :ensure_correct_user , only: [:edit, :update]
   before_action :ensure_admin , only: [:destroy]
   
+  respond_to :html, :json , :xml
+  
     def new
       if !logged_in? then
         @user = User.new
@@ -14,6 +16,7 @@ class UsersController < ApplicationController
   
   def index
     @users = User.all
+    respond_with(@user)
   end
     
     def create

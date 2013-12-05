@@ -4,6 +4,18 @@
   <% if logged_in? and owner?(player)%>
     <%= link_to "delete" , player_path(player) , :method => :delete , data: {confirm: "Are you sure?"} %>  
   <% end %>
-  <p> Creator: <%= player.user.username %> </p>
+  <p> Creator: player.user.username %> </p>s
+  <%= link_to player.user.username, user_path(player.user) %>
+  <%= link_to player.contest.name, contest_path(player.contest) %>
   <p> Description: <%= player.description %> </p>
+  <% if player.playable %>
+   <p> "My good sir, a message from the server" <p>
+  <p> He hands you an envelope, intricately adorned with markings that you recognize as belonging to house game_contest. "Thank you" you begin to say, but before you can so much as utter a word the man vanishes. "What a queer fellow" you remark. Undaunted by  this seemingly supernatural encounter you proceed to open your new letter. Inside you find a piece of the most beautiful parchment you have ever laid eyes on. Perusing it carefully, you the feel a sudden, inexplicable, overwhelmingly intense expectation that it "should text 'Player is available for matches'", and lo' and behold it does! Penned in ink of pure gold is the perfect center of the parchment are the words "Player is available for matches". Seeing this causes your entire universe to instantly collase into a single green dot. </p>
+  <% end %>
+  
+  <h2> Should have text: Match for some reason</h2>
+  
+  <h2> Matches </h2>
+  <p> Record: <%= player.wins %>-<%= player.losses %> </p>
+  <%= render player.player_matches %>
 </li>

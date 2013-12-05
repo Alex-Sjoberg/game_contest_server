@@ -1,0 +1,15 @@
+
+<% if @player.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+      <% @player.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for [@player] do |f| %>
+  <%= render 'player_fields' , f:f %>
+  <%= f.submit "Update Player" %>
+<% end %>
