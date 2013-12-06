@@ -3,5 +3,4 @@
 <%= render @matches %>
   <% ascending_sorted_players = @contest.players.sort{ |a,b| a.wins <=> b.wins } %>
   <%= render ascending_sorted_players %>
-  <% puts ascending_sorted_players %>
 </ol>
